@@ -43,38 +43,37 @@ export default function Header() {
         {/* MOBILE LAYOUT */}
         <div className="lg:hidden">
           {/* Row 1: Logo + Title + Days */}
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between gap-2 mb-3">
+            <div className="flex items-center gap-2 flex-1">
               <Image 
                 src="/assets/logos/dforest-logo.png" 
                 alt="DForest" 
-                width={50} 
-                height={50}
-                className="rounded-lg bg-white p-1 shadow-lg shadow-[#0088ff]/40"
+                width={45} 
+                height={45}
+                className="rounded-lg bg-white p-1 shadow-lg shadow-[#0088ff]/40 flex-shrink-0"
               />
-              <h1 className="text-xl font-black bg-gradient-to-r from-[#0088ff] to-[#ff8800] bg-clip-text text-transparent">
+              <h1 className="text-base font-black bg-gradient-to-r from-[#0088ff] to-[#ff8800] bg-clip-text text-transparent leading-tight">
                 DFOREST<br/>POOLPARTY
               </h1>
             </div>
-            <div className="text-lg font-black text-[#ff8800]">
+            <div className="text-base font-black text-[#ff8800] whitespace-nowrap">
               ⏰ {daysLeft} DÍAS
             </div>
           </div>
 
-          {/* Row 2: Event info */}
-          <div className="inline-block bg-gradient-to-r from-red-500 to-[#ff8800] px-3 py-1 rounded-full text-white font-bold text-xs shadow-lg animate-pulse mb-2">
-            📅 DOM 11 ENE · 10-22hs · CANNING
-          </div>
-
-          {/* Row 3: Theme toggle */}
-          <div className="flex justify-end">
+          {/* Row 2: Event info + Theme toggle */}
+          <div className="flex items-center justify-between gap-2">
+            <div className="inline-block bg-gradient-to-r from-red-500 to-[#ff8800] px-2 py-1 rounded-full text-white font-bold text-[10px] shadow-lg animate-pulse">
+              📅 DOM 11 ENE · 10-22hs
+            </div>
+            
             <button
               onClick={toggleTheme}
-              className="bg-white/10 hover:bg-white/20 backdrop-blur-xl border-2 border-[#0088ff] rounded-full p-2 transition-all hover:scale-110 group"
+              className="bg-white/10 hover:bg-white/20 backdrop-blur-xl border-2 border-[#0088ff] rounded-full p-2 transition-all hover:scale-110 group flex-shrink-0"
               aria-label="Cambiar tema"
               type="button"
             >
-              <span className="text-xl inline-block transition-transform duration-300 group-hover:rotate-180">
+              <span className="text-lg inline-block transition-transform duration-300 group-hover:rotate-180">
                 {theme === 'dark' ? '☀️' : '🌙'}
               </span>
             </button>
@@ -102,7 +101,6 @@ export default function Header() {
           </div>
           
           <div className="flex items-center gap-4">
-            {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
               className="bg-white/10 hover:bg-white/20 backdrop-blur-xl border-2 border-[#0088ff] rounded-full p-3 transition-all hover:scale-110 group"
@@ -114,7 +112,6 @@ export default function Header() {
               </span>
             </button>
 
-            {/* Days Counter */}
             <div className="text-2xl font-black text-[#ff8800]">
               ⏰ {daysLeft} DÍAS
             </div>
