@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function Header() {
@@ -8,7 +8,6 @@ export default function Header() {
   const [daysLeft, setDaysLeft] = useState(0);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
-  // Handle countdown
   useEffect(() => {
     const calculateDays = () => {
       const now = new Date().getTime();
@@ -23,7 +22,6 @@ export default function Header() {
     return () => clearInterval(interval);
   }, [eventDate]);
 
-  // Initialize theme - solo manipula DOM, no setState
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;
     if (savedTheme) {
@@ -31,19 +29,60 @@ export default function Header() {
     }
   }, []);
 
-  const toggleTheme = useCallback(() => {
-    setTheme((prevTheme) => {
-      const newTheme = prevTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      return newTheme;
-    });
-  }, []);
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
 
   return (
     <header className="bg-black/90 backdrop-blur-xl border-b-4 border-[#0088ff] sticky top-0 z-50 shadow-lg shadow-[#0088ff]/20">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-4 py-3">
+        
+        {/* MOBILE LAYOUT */}
+        <div className="lg:hidden">
+          {/* Row 1: Logo + Title + Days */}
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              <Image 
+                src="/assets/logos/dforest-logo.png" 
+                alt="DForest" 
+                width={50} 
+                height={50}
+                className="rounded-lg bg-white p-1 shadow-lg shadow-[#0088ff]/40"
+              />
+              <h1 className="text-xl font-black bg-gradient-to-r from-[#0088ff] to-[#ff8800] bg-clip-text text-transparent">
+                DFOREST<br/>POOLPARTY
+              </h1>
+            </div>
+            <div className="text-lg font-black text-[#ff8800]">
+              ⏰ {daysLeft} DÍAS
+            </div>
+          </div>
+
+          {/* Row 2: Event info */}
+          <div className="inline-block bg-gradient-to-r from-red-500 to-[#ff8800] px-3 py-1 rounded-full text-white font-bold text-xs shadow-lg animate-pulse mb-2">
+            📅 DOM 11 ENE · 10-22hs · CANNING
+          </div>
+
+          {/* Row 3: Theme toggle */}
+          <div className="flex justify-end">
+            <button
+              onClick={toggleTheme}
+              className="bg-white/10 hover:bg-white/20 backdrop-blur-xl border-2 border-[#0088ff] rounded-full p-2 transition-all hover:scale-110 group"
+              aria-label="Cambiar tema"
+              type="button"
+            >
+              <span className="text-xl inline-block transition-transform duration-300 group-hover:rotate-180">
+                {theme === 'dark' ? '☀️' : '🌙'}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* DESKTOP LAYOUT */}
+        <div className="hidden lg:flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Image 
               src="/assets/logos/dforest-logo.png" 
@@ -68,12 +107,11 @@ export default function Header() {
               onClick={toggleTheme}
               className="bg-white/10 hover:bg-white/20 backdrop-blur-xl border-2 border-[#0088ff] rounded-full p-3 transition-all hover:scale-110 group"
               aria-label="Cambiar tema"
+              type="button"
             >
-              {theme === 'dark' ? (
-                <span className="text-2xl group-hover:rotate-180 transition-transform inline-block duration-300">☀️</span>
-              ) : (
-                <span className="text-2xl group-hover:-rotate-180 transition-transform inline-block duration-300">🌙</span>
-              )}
+              <span className="text-2xl inline-block transition-transform duration-300 group-hover:rotate-180">
+                {theme === 'dark' ? '☀️' : '🌙'}
+              </span>
             </button>
 
             {/* Days Counter */}
@@ -82,6 +120,7 @@ export default function Header() {
             </div>
           </div>
         </div>
+
       </div>
     </header>
   );
