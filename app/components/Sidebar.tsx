@@ -77,9 +77,9 @@ export default function Sidebar({ activeSection, onSectionChange, isOpen, onClos
         />
       )}
 
-      {/* Sidebar */}
+      {/* Sidebar - ADJUSTED TOP POSITION */}
       <aside className={`
-        fixed lg:sticky top-20 left-0 h-[calc(100vh-5rem)] w-64
+        fixed lg:sticky top-[130px] lg:top-20 left-0 h-[calc(100vh-130px)] lg:h-[calc(100vh-5rem)] w-64
         bg-black/50 backdrop-blur-xl border-r-2 border-[#0088ff]
         overflow-y-auto z-40 transition-transform duration-300
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
