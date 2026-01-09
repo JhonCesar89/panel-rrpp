@@ -3,7 +3,7 @@ export interface SharedFolder {
   title: string;
   description: string;
   link: string;
-  type: 'drive' | 'dropbox' | 'onedrive' | 'other'| 'soundcloud';
+  type: 'drive' | 'dropbox' | 'onedrive' | 'other'| 'soundcloud'| 'youtube';
   icon: string;
 }
 
@@ -86,6 +86,14 @@ export const sharedFolders: SharedFolder[] = [
     description: 'Información musical de los artistas y playlists oficiales',
     link: 'https://soundcloud.com/leo-morlacca/leomorlacca-b2b-nawe?si=1c24027711b64f23b4b09d154b9d55fd&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnJ5-iajUdMSO2UgJicyu5xJu1c2dTajBkZDUAhVlG5oy68G1ot8lc92slQEo_aem_6QXO5rKEOo6bfdkg-6LCjA',
     type: 'soundcloud',
+    icon: '🎧'
+  },
+  {
+    id: 11,
+    title: 'Koreah Tracks y Playlists',
+    description: 'Información musical de los artistas y playlists oficiales',
+    link: 'https://youtu.be/dFYqSwaXU5o?si=HJA_87QfS6neRPaM',
+    type: 'youtube',
     icon: '🎧'
   }
 ];
