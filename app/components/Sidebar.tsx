@@ -71,8 +71,8 @@ export default function Sidebar({ activeSection, onSectionChange }: SidebarProps
       {/* Hamburger Button (Mobile) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed top-20 left-4 z-50 bg-[#0088ff] text-white p-3 rounded-lg shadow-lg hover:scale-110 transition-transform"
-      >
+        className="lg:hidden fixed top-[100px] left-4 z-50 bg-[#0088ff] text-white p-3 rounded-lg shadow-lg hover:scale-110 transition-transform"
+        >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           {isOpen ? (
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
