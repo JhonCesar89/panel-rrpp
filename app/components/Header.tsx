@@ -3,7 +3,11 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-export default function Header() {
+interface HeaderProps {
+  onMenuToggle?: () => void;
+}
+
+export default function Header({ onMenuToggle }: HeaderProps) {
   const eventDate = new Date('2026-01-11T10:00:00').getTime();
   const [daysLeft, setDaysLeft] = useState(0);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -42,8 +46,8 @@ export default function Header() {
         
         {/* MOBILE LAYOUT */}
         <div className="lg:hidden">
-          {/* Row 1: Logo + Title + Days */}
-          <div className="flex items-center justify-between gap-2 mb-3">
+          {/* Row 1: Logo + Title + Buttons */}
+          <div className="flex items-center justify-between gap-2 mb-2">
             <div className="flex items-center gap-2 flex-1">
               <Image 
                 src="/assets/logos/dforest-logo.png" 
@@ -56,27 +60,40 @@ export default function Header() {
                 DFOREST<br/>POOLPARTY
               </h1>
             </div>
-            <div className="text-base font-black text-[#ff8800] whitespace-nowrap">
-              ⏰ {daysLeft} DÍAS
+            
+            {/* Hamburger + Theme buttons */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={onMenuToggle}
+                className="lg:hidden bg-[#0088ff] text-white p-2 rounded-lg shadow-lg hover:scale-110 transition-transform"
+                aria-label="Abrir menú"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+
+              <button
+                onClick={toggleTheme}
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-xl border-2 border-[#0088ff] rounded-lg p-2 transition-all hover:scale-110 group flex-shrink-0"
+                aria-label="Cambiar tema"
+                type="button"
+              >
+                <span className="text-lg inline-block transition-transform duration-300 group-hover:rotate-180">
+                  {theme === 'dark' ? '☀️' : '🌙'}
+                </span>
+              </button>
             </div>
           </div>
 
-          {/* Row 2: Event info + Theme toggle */}
+          {/* Row 2: Event info + Days */}
           <div className="flex items-center justify-between gap-2">
             <div className="inline-block bg-gradient-to-r from-red-500 to-[#ff8800] px-2 py-1 rounded-full text-white font-bold text-[10px] shadow-lg animate-pulse">
               📅 DOM 11 ENE · 10-22hs
             </div>
-            
-            <button
-              onClick={toggleTheme}
-              className="bg-white/10 hover:bg-white/20 backdrop-blur-xl border-2 border-[#0088ff] rounded-full p-2 transition-all hover:scale-110 group flex-shrink-0"
-              aria-label="Cambiar tema"
-              type="button"
-            >
-              <span className="text-lg inline-block transition-transform duration-300 group-hover:rotate-180">
-                {theme === 'dark' ? '☀️' : '🌙'}
-              </span>
-            </button>
+            <div className="text-base font-black text-[#ff8800] whitespace-nowrap">
+              ⏰ {daysLeft} DÍAS
+            </div>
           </div>
         </div>
 
