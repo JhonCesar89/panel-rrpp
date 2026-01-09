@@ -3,20 +3,19 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import HomeSection from './components/sections/HomeSection'
-import SorteoSection from './components/sections/SorteoSection'
-import StoriesSection from './components/sections/StoriesSection'
-import CaptionsSection from './components/sections/CaptionsSection'
-import DMsSection from './components/sections/DMsSection'
-import ArtistasSection from './components/sections/ArtistasSection'
-import ReelsSection from './components/sections/ReelsSection'
-import CalendarioSection from './components/sections/CalendarioSection'
-import SharedFoldersSection from './components/sections/SharedFoldersSection'
+import HomeSection from './components/sections/HomeSection';
+import SorteoSection from './components/sections/SorteoSection';
+import StoriesSection from './components/sections/StoriesSection';
+import CaptionsSection from './components/sections/CaptionsSection';
+import DMsSection from './components/sections/DMsSection';
+import ArtistasSection from './components/sections/ArtistasSection';
+import ReelsSection from './components/sections/ReelsSection';
+import CalendarioSection from './components/sections/CalendarioSection';
+import SharedFoldersSection from './components/sections/SharedFoldersSection';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('inicio');
 
-  // Smooth scroll to top when section changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeSection]);
@@ -48,7 +47,7 @@ export default function Home() {
               {activeSection.toUpperCase()}
             </h2>
             <p className="text-gray-300">
-              Content for <span className="text-[#ff8800] font-bold">{activeSection}</span> section coming soon...
+              Contenido para <span className="text-[#ff8800] font-bold">{activeSection}</span> próximamente...
             </p>
           </div>
         );
@@ -56,7 +55,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-blue-950">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black dark:from-black dark:via-gray-900 dark:to-black [data-theme='light'] &:from-gray-100 [data-theme='light'] &:via-white [data-theme='light'] &:to-gray-100 transition-colors duration-300">
       <Header />
       <div className="flex">
         <Sidebar activeSection={activeSection} onSectionChange={setActiveSection} />

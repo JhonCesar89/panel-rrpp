@@ -92,7 +92,7 @@ export default function Sidebar({ activeSection, onSectionChange }: SidebarProps
 
       {/* Sidebar */}
       <aside className={`
-        fixed lg:sticky top-20 left-0 h-[calc(100vh-5rem)] w-64
+        sidebar fixed lg:sticky top-20 left-0 h-[calc(100vh-5rem)] w-64
         bg-black/50 backdrop-blur-xl border-r-2 border-[#0088ff]
         overflow-y-auto z-40 transition-transform duration-300
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}

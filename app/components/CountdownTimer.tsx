@@ -15,7 +15,6 @@ export default function CountdownTimer() {
   const [motivationalMessage, setMotivationalMessage] = useState('');
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 
-// Wrap messages in useMemo to prevent re-creation on every render
   const messages = useMemo(() => [
     "🔥 ÚLTIMA OPORTUNIDAD! No te pierdas la primera poolparty del 2026!",
     "⚡ SE ACABA EL TIEMPO! Asegurá tu lugar AHORA!",
@@ -28,7 +27,6 @@ export default function CountdownTimer() {
     "🏆 SÉ PARTE DE LA HISTORIA! Primera poolparty 2026!"
   ], []);
 
-  // Countdown timer effect
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -50,7 +48,6 @@ export default function CountdownTimer() {
     return () => clearInterval(timer);
   }, [eventDate]);
 
-  // Message rotation effect
   useEffect(() => {
     const messageTimer = setInterval(() => {
       setCurrentMessageIndex((prev) => (prev + 1) % messages.length);
@@ -59,18 +56,17 @@ export default function CountdownTimer() {
     return () => clearInterval(messageTimer);
   }, [messages.length]);
 
-  // Update message when index changes
   useEffect(() => {
     setMotivationalMessage(messages[currentMessageIndex]);
   }, [currentMessageIndex, messages]);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden rounded-2xl">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 animate-gradient"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 bg-[length:200%_200%] animate-gradient"></div>
       
       {/* Content */}
-      <div className="relative backdrop-blur-xl bg-black/30 rounded-2xl p-6 border-4 border-yellow-400 shadow-2xl shadow-yellow-500/50">
+      <div className="relative backdrop-blur-xl bg-black/30 p-6 border-4 border-yellow-400 shadow-2xl shadow-yellow-500/50">
         
         {/* Motivational Message */}
         <div className="text-center mb-6">
@@ -81,38 +77,38 @@ export default function CountdownTimer() {
           </div>
         </div>
 
-        {/* Countdown */}
+        {/* Countdown - SIN BACKGROUNDS INLINE */}
         <div className="grid grid-cols-4 gap-2 md:gap-4">
           {/* Days */}
-          <div className="bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-sm rounded-xl p-3 md:p-4 border-2 border-white/30 transform hover:scale-110 transition-transform">
-            <div className="text-4xl md:text-6xl font-black text-white drop-shadow-lg animate-pulse">
+          <div className="countdown-box">
+            <div className="countdown-number">
               {timeLeft.days}
             </div>
-            <div className="text-xs md:text-sm font-bold text-yellow-300 mt-2">DÍAS</div>
+            <div className="countdown-label">DÍAS</div>
           </div>
 
           {/* Hours */}
-          <div className="bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-sm rounded-xl p-3 md:p-4 border-2 border-white/30 transform hover:scale-110 transition-transform">
-            <div className="text-4xl md:text-6xl font-black text-white drop-shadow-lg">
+          <div className="countdown-box">
+            <div className="countdown-number">
               {String(timeLeft.hours).padStart(2, '0')}
             </div>
-            <div className="text-xs md:text-sm font-bold text-yellow-300 mt-2">HORAS</div>
+            <div className="countdown-label">HORAS</div>
           </div>
 
           {/* Minutes */}
-          <div className="bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-sm rounded-xl p-3 md:p-4 border-2 border-white/30 transform hover:scale-110 transition-transform">
-            <div className="text-4xl md:text-6xl font-black text-white drop-shadow-lg">
+          <div className="countdown-box">
+            <div className="countdown-number">
               {String(timeLeft.minutes).padStart(2, '0')}
             </div>
-            <div className="text-xs md:text-sm font-bold text-yellow-300 mt-2">MINUTOS</div>
+            <div className="countdown-label">MINUTOS</div>
           </div>
 
           {/* Seconds */}
-          <div className="bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-sm rounded-xl p-3 md:p-4 border-2 border-white/30 transform hover:scale-110 transition-transform">
-            <div className="text-4xl md:text-6xl font-black text-white drop-shadow-lg animate-pulse">
+          <div className="countdown-box">
+            <div className="countdown-number">
               {String(timeLeft.seconds).padStart(2, '0')}
             </div>
-            <div className="text-xs md:text-sm font-bold text-yellow-300 mt-2">SEGUNDOS</div>
+            <div className="countdown-label">SEGUNDOS</div>
           </div>
         </div>
 
@@ -128,12 +124,13 @@ export default function CountdownTimer() {
         {/* Urgency Indicators */}
         <div className="mt-4 flex justify-center gap-2 flex-wrap">
           <span className="px-3 py-1 bg-red-600 text-white text-xs font-bold rounded-full animate-pulse">
-            ⚡  SE VENDE RÁPIDO
+            ⚡ SE VENDE RÁPIDO
           </span>
           <span className="px-3 py-1 bg-orange-600 text-white text-xs font-bold rounded-full animate-pulse">
-            🔥 LA FIESTA EL FINDE ES ACÁ</span>
+            🔥 LUGARES LIMITADOS
+          </span>
           <span className="px-3 py-1 bg-yellow-600 text-white text-xs font-bold rounded-full animate-pulse">
-            ⏰ NO ESPERES MÁS!
+            ⏰ NO ESPERES
           </span>
         </div>
       </div>

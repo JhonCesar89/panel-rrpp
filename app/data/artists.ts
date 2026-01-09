@@ -24,7 +24,7 @@ export const artists: Artist[] = [
     bio: 'Artista sorpresa confirmado que se suma al lineup extendido. Nuevo nombre que promete elevar la energía del evento con su sonido único. Responsable de la extensión del horario hasta las 22hs. Más detalles y horarios de presentación a confirmar próximamente.',
     instagram: '@koreah___',
     category: 'support',
-    photo: '/assets/fotos_artistas/koreah.jpg'
+    photo: '/assets/fotos_artistas/koreah.png'
   },
   {
     id: 'rdks',
