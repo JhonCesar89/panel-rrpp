@@ -1,51 +1,40 @@
 export const calendarData = [
   {
-    date: 'TODAY - Jan 8',
-    title: '🚨 IMMEDIATE ACTION',
+    date: 'HOY - 9 Ene',  // Changed from 8 to 9
+    title: '🚨 ACCIÓN INMEDIATA',
     priority: 'HIGH',
     tasks: [
-      '✅ Post new promo: 2x$40,000',
-      '✅ Story announcing promo',
-      '✅ Update bio prices',
-      '✅ Answer pending DMs',
-      '⏰ Only 3 days left!'
+      '✅ Publicar promo: 2x$40.000',
+      '✅ Story anunciando promo',
+      '✅ Actualizar precios en bio',
+      '✅ Responder DMs pendientes',
+      '⏰ Solo quedan 2 días!'  // Changed
     ]
   },
   {
-    date: 'Jan 9',
-    title: '🔥 PUSH INTENSIVO',
-    priority: 'HIGH',
-    tasks: [
-      'Story "48 hours left"',
-      'Reels about extended hours',
-      'Stories urgency',
-      'Answer DMs constantly'
-    ]
-  },
-  {
-    date: 'Jan 10 - Friday',
-    title: '🚨 CRITICAL - Last day before event',
+    date: '10 Ene - Viernes',  // Changed from Jan 9 to Jan 10
+    title: '🚨 CRÍTICO - Último día antes del evento',
     priority: 'CRITICAL',
     tasks: [
-      'Stories "TOMORROW IS THE DAY"',
-      'Final reel',
-      'Answer DMs constantly',
-      'Last minute reminder post',
-      'Confirm shuttle info'
+      'Stories "MAÑANA ES EL DÍA"',
+      'Reel final de expectativa',
+      'Stories de urgencia constante',
+      'Responder DMs constantemente',
+      'Recordatorio de último momento'
     ]
   },
   {
-    date: 'Jan 11 - SUNDAY',
-    title: '🌴 EVENT DAY',
+    date: '11 Ene - DOMINGO',
+    title: '🌴 DÍA DEL EVENTO',
     priority: 'EVENT',
     tasks: [
-      'Morning: Story "TODAY IS THE DAY"',
-      'Last minute info',
-      'Remember time: 10-22hs',
-      'During: Live stories from event',
-      'Show lineup, pool, atmosphere',
-      'Repost attendees content',
-      'Night: Thank everyone'
+      'Mañana: Story "HOY ES EL DÍA"',
+      'Info de último momento',
+      'Recordar horario: 10-22hs',
+      'Durante: Stories en vivo del evento',
+      'Mostrar lineup, pileta, ambiente',
+      'Repostear contenido de asistentes',
+      'Noche: Agradecer a todos'
     ]
   }
 ];
